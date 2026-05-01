@@ -1,0 +1,103 @@
+
+STUDY PLANNER
+
+1. What the Project Is
+
+	The Study Planner is a desktop application that helps students keep track of:
+
+		Homework
+
+		Projects
+
+		Exams
+
+		Study sessions
+
+		Quizzes
+
+	Users can:
+
+		Add tasks
+
+		View tasks in a table
+
+		Filter (All, Completed, Incomplete, Due Today)
+
+		Mark tasks as complete
+
+		Delete tasks
+
+	The project uses:
+
+		Java Spring Boot for the backend
+
+		MySQL for data storage
+
+		Electron for the desktop GUI
+
+2. How the App Works
+
+	1.User opens the Electron desktop app
+		The UI loads and calls the Java backend API.
+
+	2.User adds a task
+ 		Electron sends it to the backend using POST /api/tasks
+ 		Task is saved in the MySQL database.
+
+	3.Viewing tasks
+		Electron requests GET /api/tasks
+		Tasks appear in a table with color-coded categories.
+
+	4.Completing a task
+		Click Complete
+		Backend updates it and the row becomes greyed out.
+
+	5.Deleting a task
+		Click Delete
+		Backend removes the task from MySQL.
+
+	6.Filtering tasks
+		Buttons apply filters through backend query parameters.
+
+	All data is through MySQL.
+
+3. How to Run the Project
+
+	A. Start MySQL
+
+		Make sure MySQL server is running.
+
+		Create database: studyplanner
+
+	B. Start the Java Backend
+
+		Open the project in Eclipse.
+
+		Right-click the main project -> Run As -> Spring Boot App.
+		Backend is now running at: http://localhost:8080/api/tasks
+
+	C. Start the Electron Desktop App
+
+		1. Open a terminal inside the studyplanner-electron folder.
+	
+		2. Install dependencies (Should already be installed)
+
+		3. Run the app: "npm start"
+
+4. Summary
+
+	Backend: Java + Spring Boot
+
+	Database: MySQL
+
+	Frontend: Electron
+
+	Purpose: Track study tasks with persistence and a modern desktop UI
+
+	How to run:
+
+		1. Start MySQL
+
+		2. Run Spring Boot backend
+
+		3. Run Electron UI

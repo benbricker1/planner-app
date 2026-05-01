@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Student Planner</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    .bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .bar input, .bar select, .bar button {
+      padding: 5px;
+    }
+    .filters {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .filters button {
+      margin-right: 5px;
+      padding: 4px 8px;
+    }
+    table {
+      width: 100%;
+      margin-top: 10px;
+      border-collapse: collapse;
+      background: #fff;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+    th {
+      background: #eee;
+    }
+    tr.completed {
+      color: #777;
+      text-decoration: line-through;
+    }
+    .tag {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      color: #fff;
+    }
+    .tag.homework { background: #1976d2; }
+    .tag.exam { background: #d32f2f; }
+    .tag.quiz { background: #ffa000; }
+    .tag.project { background: #388e3c; }
+    .tag.study { background: #7b1fa2; }
+    .status {
+      font-size: 0.85rem;
+      margin-top: 5px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Student Planner</h1>
+  <p class="status" id="statusMsg">Connected to backend: waiting...</p>
+
+  <!-- Add Task Form -->
+  <form id="taskForm" class="bar">
+    <input id="title" placeholder="Task title" required>
+    <input id="course" placeholder="Course (e.g. Java II)">
+    <input type="date" id="dueDate">
+    <select id="category">
+      <option value="Homework">Homework</option>
+      <option value="Exam">Exam</option>
+      <option value="Quiz">Quiz</option>
+      <option value="Project">Project</option>
+      <option value="Study">Study</option>
+    </select>
+    <input id="priority" type="number" min="1" max="5" placeholder="Priority">
+    <button type="submit">Add Task</button>
+  </form>
+
+  <!-- Filters -->
+  <div class="filters">
+    <button data-filter="all">All</button>
+    <button data-filter="incomplete">Incomplete</button>
+    <button data-filter="completed">Completed</button>
+    <button data-filter="today">Due Today</button>
+    <button id="refreshBtn">Refresh</button>
+  </div>
+
+  <!-- Tasks Table -->
+  <table id="taskTable">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Course</th>
+        <th>Category</th>
+        <th>Due Date</th>
+        <th>Priority</th>
+        <th>Completed</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
